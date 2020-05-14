@@ -1,4 +1,5 @@
 ﻿using MyCSharpVersionStudy._60;
+using MyCSharpVersionStudy._71;
 using System;
 
 namespace MyCSharpVersionStudy
@@ -7,8 +8,8 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            Main60 main = new Main60();
-            main.DoMain();
+            Main71 main = new Main71();
+            main.Test02();
         }
     }
 }
