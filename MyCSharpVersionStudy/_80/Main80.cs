@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyCSharpVersionStudy._80
 {
@@ -321,5 +322,116 @@ namespace MyCSharpVersionStudy._80
         };
 
         #endregion
+
+
+        /// <summary>
+        /// using 声明
+        /// </summary>
+        /// <param name="lines"></param>
+        /// <returns></returns>
+        public static int WriteLinesToFile(IEnumerable<string> lines)
+        {
+            using var file = new System.IO.StreamWriter("WriteLines2.txt");
+            // Notice how we declare skippedLines after the using statement.
+            int skippedLines = 0;
+            foreach (string line in lines)
+            {
+                if (!line.Contains("Second"))
+                {
+                    file.WriteLine(line);
+                }
+                else
+                {
+                    skippedLines++;
+                }
+            }
+            // Notice how skippedLines is in scope here.
+            return skippedLines;
+            // file is disposed here
+        }
+
+        /// <summary>
+        /// 静态本地函数
+        /// </summary>
+        /// <returns></returns>
+        int M()
+        {
+            int y = 5;
+            int x = 7;
+            return Add(x, y);
+
+            static int Add(int left, int right) => left + right;
+        }
+
+
+        public struct DoDispose : IDisposable
+        {
+            public int x;
+
+            public void Dispose()
+            {
+                x = 10086;
+            }
+        }
+
+        public static DoDispose zzzz = new DoDispose();
+
+        /// <summary>
+        /// 可处置的 ref 结构
+        /// 用 ref 修饰符声明的 struct 可实现任何接口
+        /// </summary>
+        public void Test03()
+        {
+            ref DoDispose dd = ref zzzz;
+            using (zzzz)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// 可为空引用类型
+        /// </summary>
+        public void Test04()
+        {
+            string? ss = null;
+            Console.WriteLine(ss!.Length);
+        }
+
+
+
+        public static async System.Collections.Generic.IAsyncEnumerable<int> GenerateSequence()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                await Task.Delay(100);
+                yield return i;
+            }
+        }
+
+        /// <summary>
+        /// 异步流
+        /// </summary>
+        /// <returns></returns>
+        public async Task Test05()
+        {
+            await foreach (var number in GenerateSequence())
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+        /// <summary>
+        /// 异步可释放
+        /// Task 继承了 System.IAsyncDisposable 或 IDisposable 可以释放
+        /// </summary>
+        /// <returns></returns>
+        public async Task Test06()
+        {
+            using (Task.Run(() => { Console.WriteLine(4); }))
+            {
+
+            }
+        }
     }
 }

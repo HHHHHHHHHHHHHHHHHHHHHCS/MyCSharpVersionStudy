@@ -2,6 +2,7 @@
 using MyCSharpVersionStudy._70;
 using MyCSharpVersionStudy._71;
 using MyCSharpVersionStudy._72;
+using MyCSharpVersionStudy._80;
 using System;
 
 namespace MyCSharpVersionStudy
@@ -10,8 +11,9 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            Main72 main = new Main72();
-            main.Test01();
+            Main80 main = new Main80();
+            main.Test05();
+            Console.ReadLine();
         }
     }
 }
