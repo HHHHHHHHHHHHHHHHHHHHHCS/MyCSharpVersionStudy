@@ -433,5 +433,111 @@ namespace MyCSharpVersionStudy._80
 
             }
         }
+
+        #region 索引和范围
+
+        string[] words = new string[]
+        {
+                        // index from start    index from end
+            "The",      // 0                   ^9
+            "quick",    // 1                   ^8
+            "brown",    // 2                   ^7
+            "fox",      // 3                   ^6
+            "jumped",   // 4                   ^5
+            "over",     // 5                   ^4
+            "the",      // 6                   ^3
+            "lazy",     // 7                   ^2
+            "dog"       // 8                   ^1
+        };              // 9 (or words.Length) ^0
+
+
+        public void Test07()
+        {
+            Console.WriteLine($"The last word is {words[^1]}");
+            // writes "dog"
+
+            //以下代码创建了一个包含单词“quick”、“brown”和“fox”的子范围。 它包括 words[1] 到 words[3]。 元素 words[4] 不在该范围内。
+            var quickBrownFox = words[1..4];
+
+            foreach (var item in quickBrownFox)
+            {
+                Console.WriteLine($"The last word is {item}");
+            }
+
+            var lazyDog = words[^2..^0];
+
+            var allWords = words[..]; // contains "The" through "dog".
+            var firstPhrase = words[..4]; // contains "The" through "fox"
+            var lastPhrase = words[6..]; // contains "the", "lazy" and "dog"
+
+            //此外可以将范围声明为变量：
+            Range phrase = 1..4;
+
+            var text = words[phrase];
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// C# 8.0 引入了 null 合并赋值运算符 ??=。 仅当左操作数计算为 null 时，才能使用运算符 ??= 将其右操作数的值分配给左操作数。
+        /// </summary>
+        public void Test08()
+        {
+            List<int> numbers = null;
+            int? i = null;
+
+            numbers ??= new List<int>();
+            numbers.Add(i ??= 17);
+            numbers.Add(i ??= 20);
+
+            Console.WriteLine(string.Join(" ", numbers));  // output: 17 17
+            Console.WriteLine(i);  // output: 17
+        }
+
+        public struct Coords<T>
+        {
+            public T X;
+            public T Y;
+        }
+
+        /// <summary>
+        /// 非托管构造类型
+        /// Coords<int> 类型为 C# 8.0 及更高版本中的非托管类型。 与任何非托管类型一样，可以创建指向此类型的变量的指针，或针对此类型的实例在堆栈上分配内存块：
+        /// </summary>
+        public void Test09()
+        {
+            Span<Coords<int>> coordinates = stackalloc[]
+            {
+                new Coords<int> { X = 0, Y = 0 },
+                new Coords<int> { X = 0, Y = 3 },
+                new Coords<int> { X = 4, Y = 0 }
+            };
+        }
+
+        /// <summary>
+        /// 嵌套表达式中的 stackalloc
+        /// </summary>
+        public void Test10()
+        {
+            Span<int> xx = new Span<int>(new[] { 1, 2, 3, 4, 5 });
+            Span<int> numbers = stackalloc[] { 1, 2, 3, 4, 5, 6 };
+            var ind = numbers.IndexOfAny(stackalloc[] { 2, 4, 6, 8 });
+            Console.WriteLine(ind);  // output: 1
+        }
+
+        public void Test11()
+        {
+            string s0 = $@"{1},{2}";
+            string s1 = @$"{1},{2}";
+            string s2 = $"{1},{2}";
+            string s3 = @"{1},{2}";
+
+            Console.WriteLine(s0);
+            Console.WriteLine(s1);
+            Console.WriteLine(s2);
+            Console.WriteLine(s3);
+
+        }
     }
 }

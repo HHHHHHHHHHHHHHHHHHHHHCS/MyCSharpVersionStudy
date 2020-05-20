@@ -12,7 +12,7 @@ namespace MyCSharpVersionStudy
         static void Main(string[] args)
         {
             Main80 main = new Main80();
-            main.Test05();
+            main.Test11();
             Console.ReadLine();
         }
     }
