@@ -3,6 +3,7 @@ using MyCSharpVersionStudy._70;
 using MyCSharpVersionStudy._71;
 using MyCSharpVersionStudy._72;
 using MyCSharpVersionStudy._80;
+using MyCSharpVersionStudy.MyThread;
 using System;
 
 namespace MyCSharpVersionStudy
@@ -11,8 +12,8 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            Main80 main = new Main80();
-            main.Test11();
+            var main = new MyThread0();
+            main.Test03();
             Console.ReadLine();
         }
     }
