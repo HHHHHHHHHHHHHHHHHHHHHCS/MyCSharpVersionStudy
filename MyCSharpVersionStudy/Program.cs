@@ -12,8 +12,8 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            var main = new MyThread0();
-            main.Test03();
+            var main = new MyThread1();
+            main.Test02();
             Console.ReadLine();
         }
     }
