@@ -7,6 +7,16 @@ namespace MyCSharpVersionStudy.MyThread
 {
     public class MyThread1
     {
+        //https://www.cnblogs.com/wwj1992/p/5976096.html
+
+        /*
+         * 　Abort()方法用来终止线程
+         *   ResetAbort()方法可以取消Abort()的操作
+         *   Sleep()方法调已阻塞线程
+         *   Join()方法主要是用来阻塞调用线程，直到某个线程终止或经过了指定时间为止
+         */
+
+
         public struct EventArgs
         {
             public int start;
@@ -25,7 +35,8 @@ namespace MyCSharpVersionStudy.MyThread
                 ParameterizedThreadStart ParStart = new ParameterizedThreadStart(DoThing);
 
                 Thread th = new Thread(ParStart);
-
+                //线程的优先级
+                th.Priority = (ThreadPriority)(i % 5);
                 EventArgs args = new EventArgs() { start = i * 10, count = 10 };
 
                 th.Start(args);
