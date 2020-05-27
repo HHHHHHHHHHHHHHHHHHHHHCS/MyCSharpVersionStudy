@@ -4,6 +4,7 @@ using MyCSharpVersionStudy._71;
 using MyCSharpVersionStudy._72;
 using MyCSharpVersionStudy._80;
 using MyCSharpVersionStudy.MyThread;
+using MyCSharpVersionStudy.AwaitAsync;
 using System;
 
 namespace MyCSharpVersionStudy
@@ -12,7 +13,7 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            var main = new MyThread4();
+            var main = new AwaitAsync0();
             main.Test00();
             Console.ReadLine();
         }
