@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyCSharpVersionStudy.AwaitAsync
 {
+    //https://www.cnblogs.com/zhaoshujie/p/11192036.html
     public class AwaitAsync0
     {
         public void Test00()
