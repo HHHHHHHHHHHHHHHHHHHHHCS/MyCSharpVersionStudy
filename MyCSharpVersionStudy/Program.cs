@@ -15,8 +15,8 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            var main = new Reflection0();
-            main.Test05();
+            var main = new Reflection2();
+            main.Test01();
             Console.ReadLine();
         }
     }
