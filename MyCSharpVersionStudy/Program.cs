@@ -8,6 +8,7 @@ using MyCSharpVersionStudy.MyThread;
 using MyCSharpVersionStudy.AwaitAsync;
 using MyCSharpVersionStudy.Unsafe;
 using MyCSharpVersionStudy.Reflection;
+using MyCSharpVersionStudy.Attribute;
 
 namespace MyCSharpVersionStudy
 {
@@ -15,7 +16,7 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            var main = new Reflection2();
+            var main = new Attribute1();
             main.Test01();
             Console.ReadLine();
         }
