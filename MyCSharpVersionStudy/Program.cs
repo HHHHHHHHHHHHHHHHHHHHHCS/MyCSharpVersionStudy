@@ -16,8 +16,8 @@ namespace MyCSharpVersionStudy
     {
         static void Main(string[] args)
         {
-            var main = new Attribute1();
-            main.Test01();
+            var main = new Main80();
+            main.Test07();
             Console.ReadLine();
         }
     }

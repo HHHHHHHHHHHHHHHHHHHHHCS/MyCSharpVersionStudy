@@ -453,7 +453,9 @@ namespace MyCSharpVersionStudy._80
 
         public void Test07()
         {
-            Console.WriteLine($"The last word is {words[^1]}");
+            Console.WriteLine($"The -~0:{-~0} word is {words[-~0]}");
+
+            Console.WriteLine($"The ^1 last word is {words[^1]}");
             // writes "dog"
 
             //以下代码创建了一个包含单词“quick”、“brown”和“fox”的子范围。 它包括 words[1] 到 words[3]。 元素 words[4] 不在该范围内。
@@ -461,7 +463,7 @@ namespace MyCSharpVersionStudy._80
 
             foreach (var item in quickBrownFox)
             {
-                Console.WriteLine($"The last word is {item}");
+                Console.WriteLine($"The word is {item}");
             }
 
             var lazyDog = words[^2..^0];
